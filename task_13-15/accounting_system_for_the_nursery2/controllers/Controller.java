@@ -2,8 +2,10 @@ package controllers;
 
 import views.View;
 
+import java.io.IOException;
+
 public interface Controller {
-    void addNewPet();
+    void addNewPet() throws IOException;
 
     void getCommandsPet();
 

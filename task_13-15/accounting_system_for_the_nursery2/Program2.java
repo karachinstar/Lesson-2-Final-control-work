@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
 import controllers.Controller;
 import controllers.PetController;
 import model.Registry;
@@ -8,10 +9,11 @@ import views.PetView;
 import views.View;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
 
 public class Program2 {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
         Database database = new PetsDatabase();
         Registry registry = new RegistryPets(database);
         Controller controller = new PetController(registry);

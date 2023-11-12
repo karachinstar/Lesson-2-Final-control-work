@@ -2,6 +2,7 @@ package views;
 
 import controllers.Controller;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -42,6 +43,8 @@ public class PetView implements View {
             } catch (InputMismatchException e) {
                 println("Введено не корректное значение.");
                 run();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }

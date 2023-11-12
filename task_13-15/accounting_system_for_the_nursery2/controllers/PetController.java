@@ -1,11 +1,16 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.FieldAnimal;
 import model.ParsDate;
 import model.Registry;
 import views.View;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class PetController implements Controller {
     private final Registry registry;
@@ -15,7 +20,7 @@ public class PetController implements Controller {
     }
 
     @Override
-    public void addNewPet() {
+    public void addNewPet() throws IOException {
         HashMap<Enum<FieldAnimal>, String> data = new HashMap<>();
         view.print("Введите тип питомца(dog, cat, hamster): ");
         String type = view.getString();
@@ -35,7 +40,7 @@ public class PetController implements Controller {
             view.println("Введена не верная дата.");
             return;
         }
-        view.print("Введите новую команду(или команды через запятую: : ");
+        view.print("Введите новую команду(или команды через запятую: ");
         data.put(FieldAnimal.COMMAND, view.getString());
         view.println(registry.addNewPet(data));
     }
